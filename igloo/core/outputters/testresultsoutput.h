@@ -20,6 +20,16 @@ namespace igloo {
   private:
 	  TestResultsOutput& operator=(const TestResultsOutput&) { return *this; }
   };
+
+  class NullTestResultsOutput : public TestResultsOutput
+  {
+    public:
+      NullTestResultsOutput(std::ostream& outstream = std::cout) : TestResultsOutput(outstream) {}
+
+      void PrintResult(const TestResults&) const
+      {
+      }
+  };
 }
 
 #endif 

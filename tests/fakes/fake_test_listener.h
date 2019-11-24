@@ -54,7 +54,7 @@ namespace igloo { namespace fakes {
         callLog += stm.str();
       }
 
-      void SpecFailed(const ContextBase& context, const std::string& name)
+      void SpecFailed(const ContextBase& context, const std::string& name, const FailedTestResult&)
       {
         std::stringstream stm;
         stm << "SpecFailed called for context '" << context.Name() << "' and spec '" << name << "'" << std::endl;
