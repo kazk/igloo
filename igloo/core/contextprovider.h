@@ -87,7 +87,7 @@ namespace igloo {
     {
       if(m_outerContext.get() == 0)
       {
-        m_outerContext = std::auto_ptr<OuterContext>(CreateIglooContext<OuterContext>());
+        m_outerContext = std::unique_ptr<OuterContext>(CreateIglooContext<OuterContext>());
       }
       return *(m_outerContext.get());
     }
@@ -111,7 +111,7 @@ namespace igloo {
         return new ContextType();
       }
 
-    std::auto_ptr<OuterContext> m_outerContext;
+    std::unique_ptr<OuterContext> m_outerContext;
   };
 
   //

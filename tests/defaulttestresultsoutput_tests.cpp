@@ -11,13 +11,13 @@ using namespace igloo;
 
 Context(DefaultTestResultsOutput_EmptyTestRun)
 {
-  std::auto_ptr<DefaultTestResultsOutput> output;
+  std::unique_ptr<DefaultTestResultsOutput> output;
   std::stringstream resulting_stream;
   TestResults results;
 
   void SetUp()
   {
-    output = std::auto_ptr<DefaultTestResultsOutput>(new DefaultTestResultsOutput(resulting_stream));
+    output = std::unique_ptr<DefaultTestResultsOutput>(new DefaultTestResultsOutput(resulting_stream));
   }
 
   Spec(OutputsASummaryLineWithNoTests)

@@ -44,25 +44,25 @@ namespace igloo {
           return 0;
         }
 
-        std::auto_ptr<TestResultsOutput> output;
+        std::unique_ptr<TestResultsOutput> output;
         if(c::has_option("output", opt))
         {
           std::string val = c::option_value("output", opt);
           if(val == "vs")
           {
-            output = std::auto_ptr<TestResultsOutput>(new VisualStudioResultsOutput());
+            output = std::unique_ptr<TestResultsOutput>(new VisualStudioResultsOutput());
           }
           else if(val == "color")
           {
-            output = std::auto_ptr<TestResultsOutput>(new ColoredConsoleTestResultsOutput());
+            output = std::unique_ptr<TestResultsOutput>(new ColoredConsoleTestResultsOutput());
           }
           else if(val == "xunit")
           {
-            output = std::auto_ptr<TestResultsOutput>(new XUnitResultsOutput());
+            output = std::unique_ptr<TestResultsOutput>(new XUnitResultsOutput());
           }
           else if(val == "default")
           {
-            output = std::auto_ptr<TestResultsOutput>(new DefaultTestResultsOutput());
+            output = std::unique_ptr<TestResultsOutput>(new DefaultTestResultsOutput());
           }
           else
           {
@@ -72,7 +72,7 @@ namespace igloo {
         }
         else
         {
-          output = std::auto_ptr<TestResultsOutput>(new DefaultTestResultsOutput());
+          output = std::unique_ptr<TestResultsOutput>(new DefaultTestResultsOutput());
         }
 
 

@@ -11,13 +11,13 @@ using namespace igloo;
 
 Context(XUnitResultsOutput_EmptyTestRun)
 {
-  std::auto_ptr<XUnitResultsOutput> output;
+  std::unique_ptr<XUnitResultsOutput> output;
   std::stringstream resulting_stream;
   TestResults results;
   
   void SetUp()
   {
-    output = std::auto_ptr<XUnitResultsOutput>(new XUnitResultsOutput(resulting_stream));
+    output = std::unique_ptr<XUnitResultsOutput>(new XUnitResultsOutput(resulting_stream));
   }
 
   Spec(xml_output_should_content_testsuite_tag_with_tests_attr_set_to_0)

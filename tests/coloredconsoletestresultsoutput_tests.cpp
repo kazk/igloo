@@ -10,13 +10,13 @@ using namespace igloo;
 
 Context(ColoredConsoleTestResultsOutput_EmptyTestRun)
 {
-  std::auto_ptr<ColoredConsoleTestResultsOutput> output;
+  std::unique_ptr<ColoredConsoleTestResultsOutput> output;
   std::stringstream resulting_stream;
   TestResults results;
 
   void SetUp()
   {
-    output = std::auto_ptr<ColoredConsoleTestResultsOutput>(new ColoredConsoleTestResultsOutput(resulting_stream));
+    output = std::unique_ptr<ColoredConsoleTestResultsOutput>(new ColoredConsoleTestResultsOutput(resulting_stream));
   }
 
   Spec(OutputsASummaryLineWithNoTests)
