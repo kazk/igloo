@@ -19,7 +19,7 @@
 #include <algorithm>
 #include <iterator>
 
-#include <igloo/external/snowhouse/snowhouse/snowhouse.h>
+#include <igloo/external/snowhouse/snowhouse.h>
 
 namespace igloo {
   using namespace snowhouse;

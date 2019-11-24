@@ -23,20 +23,11 @@ set_target_properties(igloo-tests PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "test
 set_target_properties(igloo-tests PROPERTIES COTIRE_ADD_UNIT_BUILD FALSE)
 # cotire(igloo-tests)
 
-set(cfg "C++" CACHE STRING "Configuration for snowhouse")
-add_subdirectory(igloo/external/snowhouse)
-
 add_custom_command(TARGET igloo-tests
                    POST_BUILD
                    COMMAND igloo-tests
                    WORKING_DIRECTORY ./bin)
 
-add_custom_command(TARGET snowhouse-tests
-                   POST_BUILD
-                   COMMAND snowhouse-tests
-                   WORKING_DIRECTORY ./bin)
-
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/igloo
         DESTINATION include/
-        FILES_MATCHING PATTERN "*.h"
-        PATTERN "igloo/external/snowhouse/example" EXCLUDE)
+        FILES_MATCHING PATTERN "*.h")
