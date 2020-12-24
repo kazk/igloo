@@ -106,7 +106,7 @@ namespace igloo {
             else
             {
               for(auto& result:results.FailedTests()) {
-                if(result.GetSpecName() == specName) {
+                if(result.GetContextName() == contextName && result.GetSpecName() == specName) {
                   testListener.SpecFailed(context, specName, result);
                 }
               }
