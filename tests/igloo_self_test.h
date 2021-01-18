@@ -17,7 +17,7 @@
   }  \
   catch(const AssertionException& exception_from_igloo_assertion)  \
   {  \
-  IGLOO_INTERNAL_expected_error = exception_from_igloo_assertion.GetMessage();  \
+  IGLOO_INTERNAL_expected_error = exception_from_igloo_assertion.what();  \
   }  \
   Assert::That(IGLOO_INTERNAL_expected_error, Is().Containing(expected_error_text));
 
