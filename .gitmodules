@@ -3,4 +3,4 @@
 	url = https://github.com/sakra/cotire.git
 [submodule "igloo/external/snowhouse"]
 	path = igloo/external/snowhouse
-	url = https://github.com/joakimkarlsson/snowhouse.git
+	url = https://github.com/codewars/snowhouse.git
