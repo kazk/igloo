@@ -1,11 +1,6 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.22)
 
 project(igloo)
-
-set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/cotire/CMake")
-include(cotire)
-
-include_directories("${PROJECT_SOURCE_DIR}")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
@@ -16,12 +11,14 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
 endif()
 
+# Define the library
+add_library(igloo INTERFACE)
+target_include_directories(igloo INTERFACE "${PROJECT_SOURCE_DIR}")
 
+# Test Code
 FILE(GLOB IglooTestSourceFiles tests/*.cpp tests/**/*.cpp)
 add_executable(igloo-tests ${IglooTestSourceFiles})
-set_target_properties(igloo-tests PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "tests/igloo_self_test.h")
-set_target_properties(igloo-tests PROPERTIES COTIRE_ADD_UNIT_BUILD FALSE)
-# cotire(igloo-tests)
+target_include_directories(igloo-tests PRIVATE "${PROJECT_SOURCE_DIR}")
 
 add_custom_command(TARGET igloo-tests
                    POST_BUILD
