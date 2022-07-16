@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - codewars
+  pull_request:
+
+jobs:
+  check:
+    # https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-Readme.md
+    # CMake 3.23.2
+    runs-on: ubuntu-20.04
+    name: Build with ${{ matrix.compiler.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler:
+          - { name: GCC,   CC: gcc,   CXX: g++ }
+          - { name: Clang, CC: clang, CXX: clang++ }
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: Build
+        env:
+          CC: ${{ matrix.compiler.CC }}
+          CXX: ${{ matrix.compiler.CXX }}
+        run: |
+          mkdir -p ./build
+          cd ./build
+          cmake ..
+          make
