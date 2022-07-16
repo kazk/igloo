@@ -40,7 +40,8 @@ class ProgressWritingTestListener : public TestListener
   {
     std::cout << "Spec succeeded for " << context.Name() << " and spec " << specName << std::endl;
   }
-  void SpecFailed(const ContextBase& context, const std::string& specName)
+
+  void SpecFailed(const ContextBase& context, const std::string& specName, const FailedTestResult&)
   {
     std::cout << "Spec failed for " << context.Name() << " and spec " << specName << std::endl;
   }
